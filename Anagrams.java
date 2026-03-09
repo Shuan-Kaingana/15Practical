@@ -5,7 +5,10 @@ import java.util.*;
 
 public class Anagrams{
     public static void main(String[]args){
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+
+        HashMap<String, List<String>> D = new HashMap<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("ULYSSES by James Joyce, 1922.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] words = line.split("\\s+");
@@ -31,12 +34,12 @@ public class Anagrams{
                     }
                 }
             }
+            reader.close();
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
             return;
         }
     }
-
         public static String makeSignature(String word) {
             char[] chars = word.toCharArray();
             Arrays.sort(chars);
