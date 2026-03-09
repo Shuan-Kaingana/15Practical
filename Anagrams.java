@@ -35,12 +35,11 @@ public class Anagrams{
             System.err.println("Error reading file: " + e.getMessage());
             return;
         }
-
-        
-
     }
-    public static String makeSignature(String word){
-        
-        return word;
-    }
+
+        public static String makeSignature(String word) {
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            return new String(chars);
+        }
 }
