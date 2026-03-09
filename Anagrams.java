@@ -8,7 +8,7 @@ public class Anagrams{
 
         HashMap<String, List<String>> D = new HashMap<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("ULYSSES by James Joyce, 1922.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("ulysses.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] words = line.split("\\s+");
