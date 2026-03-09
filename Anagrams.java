@@ -13,7 +13,6 @@ public class Anagrams{
             while ((line = reader.readLine()) != null) {
                 String[] words = line.split("\\s+");
                 for (String w : words) {
-                    // Clean up: strip punctuation but leave apostrophes
                     w = w.replaceAll("[.,;:_!\\-]+$", ""); // strip trailing punctuation
                     w = w.replaceAll("^[.,;:_!\\-]+", ""); // strip leading punctuation
                     w = w.toLowerCase();
@@ -39,10 +38,36 @@ public class Anagrams{
             System.err.println("Error reading file: " + e.getMessage());
             return;
         }
-    }
-        public static String makeSignature(String word) {
-            char[] chars = word.toCharArray();
-            Arrays.sort(chars);
-            return new String(chars);
+
+        System.out.println("=== Anagram Dictionary ===\n");
+        for (String key : D.keySet()) {
+            List<String> anagrams = D.get(key);
+            if (anagrams.size() >= 2) {
+                Collections.sort(anagrams);
+                System.out.println(key + ": " + anagrams);
+            }
         }
+    }
+
+    //Method to convert words to their signature
+    public static String makeSignature(String word) {
+        char[] chars = word.toCharArray();
+        insertionSort(chars);
+        return new String(chars);
+    }
+    
+    public static char[] insertionSort(char[] array) {
+        for (int i = 1; i < array.length; i++) {
+            char temp = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > temp) {
+                array[j + 1] = array[j];
+                j--;
+            }
+
+            array[j + 1] = temp;
+        }
+        return array;
+    }
 }
