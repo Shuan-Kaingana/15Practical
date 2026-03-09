@@ -38,8 +38,6 @@ public class Anagrams{
             System.err.println("Error reading file: " + e.getMessage());
             return;
         }
-
-        System.out.println("=== Anagram Dictionary ===\n");
         for (String key : D.keySet()) {
             List<String> anagrams = D.get(key);
             if (anagrams.size() >= 2) {
